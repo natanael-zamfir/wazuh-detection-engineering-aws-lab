@@ -287,6 +287,14 @@ sudo grep "Accepted password" /var/log/auth.log | grep john
 2026-08-28T20:16:12 ip-172-31-9-67 sshd[6557]: Accepted password for john from 172.31.6.226 port 47584 ssh2
 ```
 
+### Taking the Investigation Further
+
+Having confirmed the successful SSH compromise, I decided to take the investigation a step further and look at what could happen after an attacker gained access to the system.
+
+This led me to explore **File Integrity Monitoring (FIM)** in Wazuh and monitor locations commonly associated with persistence and payload staging, including SSH `authorized_keys`, cron configuration, and `/tmp`.
+
+I then used the compromised account to emulate post-exploitation activity and checked whether Wazuh could detect the resulting file changes. The activity included an SSH backdoor key, a cron persistence mechanism, basic host and account discovery, and a dropped file in `/tmp`.
+
 ---
 
 ## 10. Configuring Custom FIM & Persistence Rules
