@@ -1,0 +1,1 @@
+# wazuh-detection-engineering-aws-lab
